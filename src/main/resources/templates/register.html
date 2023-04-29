@@ -15,10 +15,12 @@
     First Name
     <input type="text" id="firstName" placeholder="First Name"
            th:field="*{firstName}"/>
-    <mark><strong>
+    <mark>
+        <strong>
             <span th:if="${#fields.hasErrors('firstName')}"
-                  th:errors="*{firstName}"> </span>
-    </strong></mark>
+                  th:errors="*{firstName}"></span>
+    </strong>
+    </mark>
     <br/>
     Last Name
     <input type="text" id="lastName" placeholder="Last Name"
@@ -32,18 +34,25 @@
     Email
     <input type="email" id="email" placeholder="email@domain.com"
            th:field="*{email}"/>
-    <mark><strong>
+    <mark>
+        <strong>
             <span th:if="${#fields.hasErrors('email')}"
-                  th:errors="*{email}"> </span>
-    </strong></mark>
+                  th:errors="*{email}">
+            </span>
+    </strong>
+    </mark>
     <br/>
     Username
     <input type="text" id="username" placeholder="Username"
            th:field="*{username}"/>
-    <mark><strong>
+    <mark>
+        <strong>
             <span th:if="${#fields.hasErrors('username')}"
-                  th:errors="*{username}"> </span>
-    </strong></mark>
+                  th:errors="*{username}">
+            </span>
+            <span th:if="${message}">[[${message}]]</span>
+    </strong>
+    </mark>
     <br/>
     Password
     <input type="password" id="password" placeholder="Password"

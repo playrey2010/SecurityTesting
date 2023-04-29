@@ -58,7 +58,11 @@ public class HomeController {
     @PostMapping("/register")
     public String processRegistrationPage(@Valid @ModelAttribute("user") User user,
                                           BindingResult result, Model model){
-        if (result.hasErrors()){
+        // check if the username is already taken
+        if (userRepository.findByUsername(user.getUsername()) != null) {
+            model.addAttribute("message", "Username already taken.");
+            return "register";
+        } else if (result.hasErrors()){
             user.clearPassword();
             model.addAttribute("user", user);
             return "register";
